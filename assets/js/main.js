@@ -8,6 +8,11 @@ var weatherDayUvIndexEl = document.querySelector("#weather-day-uv-index");
 var forecastContainerEl = document.querySelector("#forecast-container");
 var weatherDayIconEl = document.querySelector("#weather-day-icon");
 var buttonContainerEl = document.querySelector("#button-container");
+var weatherDayContainerEl = document.querySelector("#weather-day-container");
+var outerForecastContainerEl = document.querySelector(
+  "#outer-forecast-container"
+);
+var weatherDayDateEl = document.querySelector("#weather-day-date");
 
 var baseUrl = "http://api.openweathermap.org/";
 var apiKey = "54330efedf22e2ce54f6bbcee8ed5498";
@@ -25,8 +30,13 @@ function populate5day(data) {
     var humidity = day.humidity;
     var icon = day.weather[0].icon;
     var div = document.createElement("div");
-    div.classList = "card-weather col-md-2 col-sm-12 bg-dark text-light me-3";
+    var offsetClass = "";
+    if (index === 1) {
+      offsetClass = "col-lg-offset-1";
+    }
+    div.classList = `card-weather-container col-sm-12 ${offsetClass} col-lg-2 text-light`;
     div.innerHTML = `
+        <div class="card-weather bg-dark p-3"> 
             <h4>${date}</h4>
             <img src="https://openweathermap.org/img/wn/${icon}.png" />
             <dl>
@@ -37,9 +47,11 @@ function populate5day(data) {
                 <dt>Humidity</dt>
                 <dd>${humidity}%</dd>
             </dl>
-          `;
+        </div>
+    `;
     forecastContainerEl.appendChild(div);
   });
+  outerForecastContainerEl.classList.remove("hide");
 }
 
 function getCityDayWeather(city) {
@@ -70,6 +82,7 @@ function getCityDayWeather(city) {
         })
         .then(function (data) {
           console.log(data);
+          var date = moment(Date.now()).format("L");
           var current = data.current;
           var temp = current.temp;
           var windSpeed = current.wind_speed;
@@ -78,6 +91,7 @@ function getCityDayWeather(city) {
           var icon = current.weather[0].icon;
 
           weatherDayCityEl.textContent = city;
+          weatherDayDateEl.textContent = date;
           weatherDayTempEl.textContent = temp;
           weatherDayWindEl.textContent = windSpeed;
           weatherDayTempEl.textContent = temp;
@@ -92,7 +106,7 @@ function getCityDayWeather(city) {
           }
 
           weatherDayIconEl.src = `https://openweathermap.org/img/wn/${icon}.png`;
-
+          weatherDayContainerEl.classList.remove("hide");
           populate5day(data.daily);
         });
     });
@@ -117,6 +131,7 @@ function populateButtons() {
 }
 
 function storeCityLocation(city) {
+  city = city.toLowerCase();
   var cities = window.localStorage.getItem("cities");
   if (cities) {
     cities = JSON.parse(cities);
@@ -134,7 +149,6 @@ function storeCityLocation(city) {
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
-  debugger;
   var city = searchFormCityInputEl.value;
   getCityDayWeather(city);
 }

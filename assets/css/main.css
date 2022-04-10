@@ -1,10 +1,49 @@
+:root {
+  --spacing: 10px;
+}
+
+header {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  text-align: center;
+}
+
 dt {
   float: left;
-  margin-right: 7px;
+  margin-right: var(--spacing);
+}
+
+button {
+  text-transform: capitalize;
+}
+
+#weather-day-container {
+  min-height: 230px;
+  border: 1px solid gray;
+}
+
+#search-container,
+input,
+#button-container button {
+  margin-bottom: var(--spacing);
+}
+
+#button-container {
+  padding-top: var(--spacing);
+  border-top: 2px solid gray;
 }
 
 #weather-day-uv-index {
-  padding: 7px;
+  padding: 2px;
+}
+
+.hide {
+  display: none;
 }
 
 .favorable {

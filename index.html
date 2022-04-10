@@ -17,22 +17,22 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <header>
+          <header class="p-2 text-light mb-2">
             <h1>Weather Dashboard</h1>
           </header>
         </div>
       </div>
       <div class="row">
-        <div class="col-3">
+        <div class="col-sm-12 col-lg-3">
           <aside>
             <div id="search-container">
-              <h2>Search for a City:</h2>
+              <h2 class="fs-2">Search for a City:</h2>
               <form id="search-form">
                 <input
                   id="search-form-city-input"
                   type="text"
                   placeholder="San Diego"
-                  class="col-12"
+                  class="col-12 form-control"
                 />
                 <button class="btn btn-primary col-12">Search</button>
               </form>
@@ -40,12 +40,15 @@
             <div id="button-container"></div>
           </aside>
         </div>
-        <div class="col-9">
+        <div class="col-sm-12 col-lg-9">
           <main>
-            <div class="row">
+            <div id="weather-day-container" class="hide row">
               <div class="col-12">
-                <h2 id="weather-day-city"></h2>
-                <img id="weather-day-icon" src="" />
+                <div class="d-flex">
+                  <h2 class="me-2 text-capitalize" id="weather-day-city"></h2>
+                  <h2 class="me-2" id="weather-day-date"></h2>
+                  <img id="weather-day-icon" src="" />
+                </div>
                 <dl>
                   <dt>Temp:</dt>
                   <dd id="weather-day-temp"></dd>
@@ -58,12 +61,12 @@
                 </dl>
               </div>
             </div>
-            <div class="row">
+            <div id="outer-forecast-container" class="hide row">
               <div class="col-12">
                 <h3>5-Day Forecast:</h3>
               </div>
-              <div id="forecast-container"></div>
             </div>
+            <div id="forecast-container" class="row g-2"></div>
           </main>
         </div>
       </div>
