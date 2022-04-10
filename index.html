@@ -10,6 +10,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="assets/css/main.css" />
     <title>Weather Dashboard</title>
   </head>
   <body>
@@ -27,29 +28,33 @@
             <div id="search-container">
               <h2>Search for a City:</h2>
               <form id="search-form">
-                <input type="text" placeholder="San Diego" class="col-12" />
+                <input
+                  id="search-form-city-input"
+                  type="text"
+                  placeholder="San Diego"
+                  class="col-12"
+                />
                 <button class="btn btn-primary col-12">Search</button>
               </form>
             </div>
-            <div>
-              <button class="btn btn-secondary col-12">Austin</button>
-            </div>
+            <div id="button-container"></div>
           </aside>
         </div>
         <div class="col-9">
           <main>
             <div class="row">
               <div class="col-12">
-                <h2 id="weather-day-city">Atlanta (3/30/2021)</h2>
+                <h2 id="weather-day-city"></h2>
+                <img id="weather-day-icon" src="" />
                 <dl>
                   <dt>Temp:</dt>
-                  <dd id="weather-day-temp">73.32</dd>
+                  <dd id="weather-day-temp"></dd>
                   <dt>Wind:</dt>
-                  <dd id="weather-day-wind">9.53 MPH</dd>
+                  <dd id="weather-day-wind"></dd>
                   <dt>Humidity</dt>
-                  <dd id="weather-day-humidity">66%</dd>
+                  <dd id="weather-day-humidity"></dd>
                   <dt>UV Index:</dt>
-                  <dt id="weather-day-uv-index" class="rounded">0.47</dt>
+                  <dt id="weather-day-uv-index" class="rounded"></dt>
                 </dl>
               </div>
             </div>
@@ -57,58 +62,13 @@
               <div class="col-12">
                 <h3>5-Day Forecast:</h3>
               </div>
-              <div class="card-weather col-md-3 col-sm-12 bg-dark text-light">
-                <h4>3/31/2021</h4>
-                <img src="https://via.placeholder.com/20" />
-                <dl>
-                  <dt>Temp:</dt>
-                  <dd>73.32</dd>
-                  <dt>Wind:</dt>
-                  <dd>9.53 MPH</dd>
-                  <dt>Humidity</dt>
-                  <dd>66%</dd>
-                </dl>
-              </div>
-              <div class="card-weather col-md-3 col-sm-12 bg-dark text-light">
-                <h4>3/31/2021</h4>
-                <img src="https://via.placeholder.com/20" />
-                <dl>
-                  <dt>Temp:</dt>
-                  <dd>73.32</dd>
-                  <dt>Wind:</dt>
-                  <dd>9.53 MPH</dd>
-                  <dt>Humidity</dt>
-                  <dd>66%</dd>
-                </dl>
-              </div>
-              <div class="card-weather col-md-3 col-sm-12 bg-dark text-light">
-                <h4>3/31/2021</h4>
-                <img src="https://via.placeholder.com/20" />
-                <dl>
-                  <dt>Temp:</dt>
-                  <dd>73.32</dd>
-                  <dt>Wind:</dt>
-                  <dd>9.53 MPH</dd>
-                  <dt>Humidity</dt>
-                  <dd>66%</dd>
-                </dl>
-              </div>
-              <div class="card-weather col-md-3 col-sm-12 bg-dark text-light">
-                <h4>3/31/2021</h4>
-                <img src="https://via.placeholder.com/20" />
-                <dl>
-                  <dt>Temp:</dt>
-                  <dd>73.32</dd>
-                  <dt>Wind:</dt>
-                  <dd>9.53 MPH</dd>
-                  <dt>Humidity</dt>
-                  <dd>66%</dd>
-                </dl>
-              </div>
+              <div id="forecast-container"></div>
             </div>
           </main>
         </div>
       </div>
     </div>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
